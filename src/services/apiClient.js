@@ -2,7 +2,7 @@ import axios from "axios";
 
 const apiClient = axios.create({
   baseURL:
-    "https://banquendpasionlectour-h9ftfhcggfb7h9cs.switzerlandnorth-01.azurewebsites.net",
+    "https://windowsbackend-hvc9hmeffnftd6dc.switzerlandnorth-01.azurewebsites.net",
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",
