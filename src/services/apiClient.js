@@ -1,9 +1,8 @@
 import axios from "axios";
 
-console.log("VITE_API_URL =", import.meta.env.VITE_API_URL);
-
 const apiClient = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL:
+    "https://passionlecturebackend-fthxdjardfg6b5h5.switzerlandnorth-01.azurewebsites.net",
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",
@@ -13,6 +12,9 @@ const apiClient = axios.create({
 
 apiClient.interceptors.request.use(
   (config) => {
+    console.log("REQUEST BASE URL =", config.baseURL);
+    console.log("REQUEST URL =", config.url);
+
     const token = localStorage.getItem("auth_token");
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
@@ -21,12 +23,12 @@ apiClient.interceptors.request.use(
     }
     return config;
   },
-  (error) => Promise.reject(error)
+  (error) => Promise.reject(error),
 );
 
 apiClient.interceptors.response.use(
   (response) => response,
-  (error) => Promise.reject(error)
+  (error) => Promise.reject(error),
 );
 
 export default apiClient;
